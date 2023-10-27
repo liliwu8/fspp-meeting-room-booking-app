@@ -1,0 +1,16 @@
+{
+  "name": "fspp-meeting-room-booking-app",
+  "version": "1.0.0",
+  "description": "full stack meeting room booking app",
+  "main": "back-end/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "meeting",
+    "room",
+    "booking"
+  ],
+  "author": "",
+  "license": "ISC"
+}
