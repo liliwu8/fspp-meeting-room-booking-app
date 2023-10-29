@@ -8,8 +8,8 @@ CREATE DATABASE reserve;
 \c reserve; 
 
 --step 4 create the tables
-DROP TABLE IF EXISTS meeting;
-CREATE TABLE meeting(
+DROP TABLE IF EXISTS meetingRoom;
+CREATE TABLE meetingRoom(
     meeting_roomid SERIAL PRIMARY KEY,
     room_name TEXT,
     capacity INTEGER,
@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS booking;
 CREATE TABLE booking(
     booking_id SERIAL PRIMARY KEY,
     meeting_name TEXT,
-    book_meeting_roomid INTEGER NOT NULL REFERENCES meeting(meeting_roomid)
+    meeting_roomid INTEGER NOT NULL REFERENCES meetingRoom(meeting_roomid)
     ON DELETE CASCADE,
     start_time timestamp with time zone,
     end_time timestamp with time zone,
