@@ -14,16 +14,17 @@ INSERT INTO meetingRoom (room_name, capacity, floor) VALUES
   ('Executive Suite', 5, 4);
 
 -- Seed data for the "booking" table
-INSERT INTO booking (meeting_name, meeting_roomid, start_time, end_time, attendees) VALUES
-  ('Team Meeting', 1, '2023-10-27T09:00:00.000Z', '2023-10-27T10:30:00.000Z', 'John.Smith@example.com, Mary.Johnson@example.com, Alice.Davis@example.com'),
-  ('Client Presentation', 3, '2023-10-27T14:00:00.000Z', '2023-10-27T16:00:00.000Z', 'David.Wilson@example.com, Sarah.Brown@example.com'),
-  ('Board Meeting', 5, '2023-10-28T10:00:00.000Z', '2023-10-28T12:00:00.000Z', 'Michael.Anderson@example.com, Lisa.Martinez@example.com'),
-  ('Training Session', 8, '2023-10-29T15:00:00.000Z', '2023-10-29T17:00:00.000Z', 'Jennifer.Taylor@example.com, Richard.White@example.com'),
-  ('Team Meeting', 2, '2023-10-30T09:30:00.000Z', '2023-10-30T11:00:00.000Z', 'Robert.Jackson@example.com, Emily.Lee@example.com'),
-  ('Conference Call', 4, '2023-10-31T11:30:00.000Z', '2023-10-31T12:30:00.000Z', 'Daniel.Thomas@example.com, Jessica.Hall@example.com'),
-  ('Client Meeting', 6, '2023-11-01T16:00:00.000Z', '2023-11-01T17:30:00.000Z', 'Karen.Perez@example.com, Christopher.Adams@example.com'),
-  ('Workshop', 9, '2023-11-02T13:00:00.000Z', '2023-11-02T16:00:00.000Z', 'Mark.Scott@example.com, Laura.Evans@example.com'),
-  ('Executive Meeting', 10, '2023-11-03T10:00:00.000Z', '2023-11-03T11:30:00.000Z', 'William.Rodriguez@example.com, Elizabeth.Harris@example.com'),
-  ('Team Huddle', 7, '2023-11-04T09:30:00.000Z', '2023-11-04T10:30:00.000Z', 'John.Smith@example.com, Mary.Johnson@example.com');
 
+-- Seed data for the "booking" table with working hours and time intervals in the afternoon (PM) in EST time
+INSERT INTO booking (meeting_name, book_meeting_roomid, start_time, end_time, attendees) VALUES
+  ('Team Meeting', 1, '2023-10-27 19:00:00.000Z', '2023-10-27 20:00:00.000Z', 'john@example.com, mary@example.com, alice@example.com'),
+  ('Client Presentation', 3, '2023-10-27 19:30:00.000Z', '2023-10-27 20:30:00.000Z', 'david@example.com, sarah@example.com'),
+  ('Board Meeting', 5, '2023-10-28 20:00:00.000Z', '2023-10-28 21:00:00.000Z', 'michael@example.com, lisa@example.com'),
+  ('Training Session', 8, '2023-10-29 19:30:00.000Z', '2023-10-29 20:30:00.000Z', 'jennifer@example.com, richard@example.com'),
+  ('Team Meeting', 2, '2023-10-30 20:00:00.000Z', '2023-10-30 21:00:00.000Z', 'robert@example.com, emily@example.com'),
+  ('Conference Call', 4, '2023-10-31 19:00:00.000Z', '2023-10-31 20:30:00.000Z', 'daniel@example.com, jessica@example.com'),
+  ('Client Meeting', 6, '2023-11-01 21:30:00.000Z', '2023-11-01 22:30:00.000Z', 'karen@example.com, christopher@example.com'),
+  ('Workshop', 9, '2023-11-02 18:00:00.000Z', '2023-11-02 19:00:00.000Z', 'mark@example.com, laura@example.com'),
+  ('Executive Meeting', 10, '2023-11-03 20:30:00.000Z', '2023-11-03 21:30:00.000Z', 'william@example.com, elizabeth@example.com'),
+  ('Team Huddle', 7, '2023-11-04 19:30:00.000Z', '2023-11-04 20:30:00.000Z', 'john@example.com, mary@example.com');
 

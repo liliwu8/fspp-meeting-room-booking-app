@@ -1,10 +1,11 @@
 //import the db object
 const db = require("../db/dbConfig.js");
 
+
 //get all bookings
 const getAllBookings = async () => {
     try {
-      const allBookings = await db.any("SELECT * FROM booking");
+      const allBookings = await db.any("SELECT b.id AS booking_id, b.meeting_name,b.start_time, b.end_time, m.room_name AS meeting_room_name, m.floor AS meeting_floor FROM booking AS b JOIN meetingRoom AS m ON b.book_meeting_roomid = m.id");
       return allBookings;
     } catch (error) {
       console.log(error.message);
@@ -13,7 +14,7 @@ const getAllBookings = async () => {
   
 const getBooking = async (id) => {
     try {
-      const booking = await db.any("SELECT * FROM booking WHERE booking_id=$1", id);
+ const booking = await db.any("SELECT b.id AS booking_id,b.meeting_name, b.start_time, b.end_time, m.room_name AS meeting_room_name,m.floor AS meeting_floor FROM booking AS b JOIN meetingRoom AS m ON b.book_meeting_roomid = m.id WHERE b.id = $1", id);
       return booking;
     } catch (error) {
       console.log(error.message);
@@ -23,7 +24,7 @@ const getBooking = async (id) => {
 const deleteBooking = async (bookingId) => {
     try {
       const deleteBook = await db.one(
-        'delete from booking where booking_id=$1 returning *',
+        'delete from booking where id=$1 returning *',
         bookingId
       )
       return deleteBook

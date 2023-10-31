@@ -14,7 +14,7 @@ const getAllMeetingRooms = async () => {
 const getMeetingRoom = async (id) => {
   try {
     const meetingRoom = await db.any(
-      'SELECT * FROM meetingRoom WHERE meeting_roomid=$1',
+      'SELECT * FROM meetingRoom WHERE id=$1',
      [ id]
     )
     return(meetingRoom)
@@ -39,38 +39,13 @@ const createMeetingRoom = async (meetingRoom) => {
   }
 }
 
-const updatingMeetingRoom = async (meetingRoom) => {
-  const { room_name, capacity, floor } = meetingRoom
-  try {
-    const updateMeetingRoom = await db.one(
-      'update meetingRoom set room_name=$1, capacity=$2 where floor=$3 returning *',
-      [room_name, capacity, floor]
-    )
-    return updateMeetingRoom
-  } catch (error) {
-    console.log(error.message || error)
-  }
-}
-
-const deleteMeetingRoom = async (meeting_roomid) => {
-  try {
-    const deleteRoom = await db.one(
-      'delete from meetingRoom where meeting_roomid=$1 returning *',
-      meeting_roomid
-    )
-    return deleteRoom
-  } catch (error) {
-    console.log(error.message || error)
-  }
-}
-
 const getAllFutureBookingsForRoom = async (meetingRoomId) => {
 
   try {
 
     // Get future bookings for the meeting
     const futureBookings = await db.any(
-      'SELECT * FROM booking WHERE meeting_roomid = $1 AND start_time > NOW()',
+      'SELECT * FROM booking WHERE book_meeting_roomid = $1 AND start_time > NOW()',
       [meetingRoomId]
     );
 
@@ -85,8 +60,6 @@ module.exports = {
   getAllMeetingRooms,
   getMeetingRoom,
   createMeetingRoom,
-  updatingMeetingRoom,
-  deleteMeetingRoom,
   getAllFutureBookingsForRoom
 }
  

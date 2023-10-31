@@ -2,19 +2,17 @@
 const express = require('express')
 
 //sub routes
-const meetingRoomsController = express.Router()
+const meetingRooms = express.Router()
 
 const {
   getAllMeetingRooms,
   getMeetingRoom,
   createMeetingRoom,
-  updatingMeetingRoom,
-  deleteMeetingRoom,
   getAllFutureBookingsForRoom,
 } = require('../queries/meetingRoom')
 
 //display all meeting rooms
-meetingRoomsController.get('/', async (req, res) => {
+meetingRooms.get('/', async (req, res) => {
   try {
     const allMeetingRooms = await getAllMeetingRooms()
     res.status(200).json({ success: true, payload: allMeetingRooms })
@@ -23,7 +21,7 @@ meetingRoomsController.get('/', async (req, res) => {
   }
 })
 
-meetingRoomsController.get('/:meetingroom_id', async (req, res) => {
+meetingRooms.get('/:meetingroom_id', async (req, res) => {
   const { meetingroom_id } = req.params
   const meetingRoom = await getMeetingRoom(meetingroom_id)
 console.log(meetingRoom)
@@ -34,7 +32,7 @@ console.log(meetingRoom)
   }
 })
 
-meetingRoomsController.post('/newmeeting-room', async (req, res) => {
+meetingRooms.post('/', async (req, res) => {
   const addMeetingRoom = await createMeetingRoom(req.body)
 
   if (addMeetingRoom) {
@@ -44,30 +42,7 @@ meetingRoomsController.post('/newmeeting-room', async (req, res) => {
   }
 })
 
-meetingRoomsController.put('/updatemeeting-room', async (req, res) => {
-  const changeMeeting = await updatingMeetingRoom(req.body)
-
-  if (changeMeeting) {
-    res.status(200).json({ success: true, payload: changeMeeting })
-  } else {
-    res.status(400).json({ success: false, payload: 'update error ' })
-  }
-})
-
-meetingRoomsController.delete(
-  '/deleteroom/:meetingroomid',
-  async (req, res) => {
-    const { meetingroomid } = req.params
-    const deleteOneMeetingRoom = await deleteMeetingRoom(meetingroomid)
-    if (deleteOneMeetingRoom) {
-      res.status(200).json({ success: true, payload: deleteOneMeetingRoom })
-    } else {
-      res.status(404).json({ error: 'server error' })
-    }
-  }
-)
-
-meetingRoomsController.get('/:meetingRoom_id/bookings', async (req, res) => {
+meetingRooms.get('/:meetingRoom_id/bookings', async (req, res) => {
   const { meetingRoom_id } = req.params;
 
   try {
@@ -84,4 +59,4 @@ meetingRoomsController.get('/:meetingRoom_id/bookings', async (req, res) => {
   
 });
 
-module.exports = meetingRoomsController
+module.exports = meetingRooms

@@ -2,20 +2,19 @@ const express = require('express')
 
 const { getAllBookings, getBooking, deleteBooking, createBooking } = require('../queries/booking')
 
-const bookingController = express.Router()
+const booking= express.Router()
 
 
-bookingController.get('/', async (req, res) => {
+booking.get('/', async (req, res) => {
     try {
         const bookings = await getAllBookings()
-        console.log(bookings)
       res.status(200).json({ success: true, payload: bookings })
     } catch (error) {
       res.status(400).json({ success: false, message: 'not found!' })
     }
 })
   
-bookingController.get('/:booking_id', async (req, res) => {
+booking.get('/:booking_id', async (req, res) => {
     const { booking_id } = req.params
     
     const booking = await getBooking(booking_id)
@@ -26,7 +25,7 @@ bookingController.get('/:booking_id', async (req, res) => {
     }
   })
 
-  bookingController.delete('/deletebooking/:bookingId', async (req, res) => {
+  booking.delete('/:bookingId', async (req, res) => {
     const { bookingId } = req.params
       
     const deleteBook = await deleteBooking(bookingId)
@@ -37,7 +36,7 @@ bookingController.get('/:booking_id', async (req, res) => {
     }
   })
 
-  bookingController.post('/newbooking', async (req, res) => {
+  booking.post('/newbooking', async (req, res) => {
       const createABooking = await createBooking(req.body)
       console.log(createABooking)
     if (createABooking) {
@@ -48,4 +47,4 @@ bookingController.get('/:booking_id', async (req, res) => {
 })
 
   
-module.exports = bookingController
+module.exports = booking

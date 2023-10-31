@@ -1,0 +1,31 @@
+.roomList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the cards vertically */
+    align-items: center; /* Center the cards horizontally */
+    gap: 20px;
+  }
+  
+  .roomList__container {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+  }
+  
+  .roomList__container h3 {
+    /* font-size: 20px; */
+    margin: 0;
+  }
+  
+  .roomList__container p {
+    margin: 8px 0;
+  }
+  
+  
+  
+  
+  
+  
