@@ -7,19 +7,14 @@ import SingleMeetingRoom from './Pages/SingleMeetingRoom'
 import Bookings from './Pages/Bookings'
 import './App.css'
 
-
 function App() {
-
   return (
     <div className='App'>
       <NavBar />
       <Routes>
         <Route>
-          <Route path='/' element={<Home  />} />
-          <Route
-            path='/meetingrooms/:id'
-            element={<SingleMeetingRoom />}
-          />
+          <Route path='/' element={<Home />} />
+          <Route path='/meetingrooms/:id' element={<SingleMeetingRoom />} />
           <Route path='/meetingrooms/new' element={<NewRoom />} />
           <Route path='/bookings' element={<Bookings />} />
           <Route path='/bookings/:id' element={<SingleBooking />} />

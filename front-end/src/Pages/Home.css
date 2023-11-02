@@ -1,8 +1,8 @@
-.roomList {
+/* .roomList {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center the cards vertically */
-    align-items: center; /* Center the cards horizontally */
+    justify-content: center; 
+    align-items: center; 
     gap: 20px;
   }
   
@@ -16,7 +16,7 @@
   }
   
   .roomList__container h3 {
-    /* font-size: 20px; */
+   
     margin: 0;
   }
   
@@ -27,5 +27,250 @@
   
   
   
+.searchAvailableRoomForm{
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+.searchAvailableRoomForm__container{
+  margin: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
   
-  
+}
+
+.searchAvailableRoomForm__row{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.searchAvailableRoomForm__col {
+  flex-basis: 48%;
+}
+
+.searchAvailableRoomForm__col-full {
+  flex-basis: 100%;
+}
+.searchAvailableRoomForm__startTime{
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 37px;
+  width: 100%;
+}
+.searchAvailableRoomForm__endTime {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 37px;
+  width: 100%;
+}
+.searchAvailableRoomForm__roomFloor {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 37px;
+  width: 100%;
+}
+.searchAvailableRoomForm__roomCapacity {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 37px;
+  width: 100%;
+}
+
+.game-form-innerContainer {
+  margin: 10px;
+}
+.searchAvailableRoomForm__roomLabel{
+  font-weight: bold;
+} */
+
+/* 
+.searchAvailableRoomForm {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.searchAvailableRoomForm__container {
+  margin: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+}
+
+.searchAvailableRoomForm__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.searchAvailableRoomForm__col {
+  flex-basis: 48%;
+}
+
+.searchAvailableRoomForm__col-full {
+  flex-basis: 100%;
+}
+
+.searchAvailableRoomForm__startTime {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 37px;
+  width: 100%;
+}
+
+.searchAvailableRoomForm__endTime {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 37px;
+  width: 100%;
+}
+
+.searchAvailableRoomForm__roomFloor {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 37px;
+  width: 100%;
+}
+
+.searchAvailableRoomForm__roomCapacity {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 37px;
+  width: 100%;
+}
+
+.searchAvailableRoomForm__roomLabel {
+  font-weight: bold;
+} */
+
+.searchAvailableRoomForm {
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.searchAvailableRoomForm__container {
+  margin: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+}
+
+.searchAvailableRoomForm__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.searchAvailableRoomForm__row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.searchAvailableRoomForm__col {
+  flex-basis: 48%;
+}
+
+.searchAvailableRoomForm__col-full {
+  flex-basis: 100%;
+}
+
+.searchAvailableRoomForm__startTime,
+.searchAvailableRoomForm__endTime,
+.searchAvailableRoomForm__roomFloor,
+.searchAvailableRoomForm__roomCapacity {
+  /* border: 1px solid black; */
+  height: 30px;
+  min-width: 60%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.searchAvailableRoomForm__roomLabel {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.searchAvailableRoomForm button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.roomList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* .roomList__container {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+} */
+
+.roomList__container {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 420px;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.roomList__container h3 {
+  font-size: 20px;
+  margin: 0;
+}
+.roomList a {
+  text-decoration: none; 
+  color: #007bff;
+}
+.roomList__container p {
+  margin: 8px 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.roomList__container:hover {
+  background-color: #f0f0f0; /* Add a background color on hover */
+}
+.pagination button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.roomList:empty::after {
+  content: 'No rooms';
+  font-size: 18px;
+  color: #777;
+  margin-top: 10px;
+}
+
+.searchAvailableRoomForm__innerContainer {
+  margin: 10px;
+}

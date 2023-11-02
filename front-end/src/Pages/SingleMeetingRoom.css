@@ -1,0 +1,92 @@
+/* .singleMeetingRoom__info {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.singleMeetingRoom__capacity {
+  margin: auto 0;
+} */
+.singleMeetingRoom__info {
+  display: flex;
+  justify-content: center; /* Center align horizontally */
+  align-items: center; /* Center align vertically */
+  margin-top: 30px;
+  gap: 36px;
+  font-size: larger;
+}
+
+.singleMeetingRoom__info h3 {
+  margin: 0; /* Remove default margin for the h3 element */
+}
+
+.singleMeetingRoom__capacity {
+  display: flex;
+  align-items: center;
+  margin: 0 20px; /* Add some horizontal spacing between items */
+}
+
+.singleMeetingRoom__capacity span,
+.singleMeetingRoom__info div span {
+  margin-left: 5px; /* Add some spacing between icon and text */
+}
+
+.bookMeetingRoomForm {
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .bookMeetingRoomForm__container {
+    margin: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+  }
+  
+  .bookMeetingRoomForm_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  
+  .bookMeetingRoomForm__row {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .bookMeetingRoomForm__col {
+    flex-basis: 48%;
+  }
+  
+  .bookMeetingRoomForm__col-full {
+    flex-basis: 100%;
+  }
+  
+  .bookMeetingRoomForm__startTime,
+  .bookMeetingRoomForm__endTime,
+  .bookMeetingRoomForm__attendees,
+  .bookMeetingRoomForm__meetingRoom {
+    height: 30px; 
+    min-width: 60%;
+    font-size: 14px; 
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .bookMeetingRoomForm__label{
+    font-weight: bold;
+    font-size: 16px; 
+  }
+  
+  .bookMeetingRoomForm button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .bookMeetingRoomForm__innerContainer {
+    margin: 10px;
+  }

@@ -24,7 +24,7 @@ meetingRooms.get('/', async (req, res) => {
 meetingRooms.get('/:meetingroom_id', async (req, res) => {
   const { meetingroom_id } = req.params
   const meetingRoom = await getMeetingRoom(meetingroom_id)
-console.log(meetingRoom)
+
   if (meetingRoom[0]) {
     res.status(200).json({ success: true, payload: meetingRoom[0] })
   } else {
@@ -47,7 +47,7 @@ meetingRooms.get('/:meetingRoom_id/bookings', async (req, res) => {
 
   try {
     const getFutureBookings = await getAllFutureBookingsForRoom(meetingRoom_id);
-
+    
     if (getFutureBookings) {
       res.status(200).json({ success: true, payload: getFutureBookings });
     } else {

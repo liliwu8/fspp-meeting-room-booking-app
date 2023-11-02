@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import { confirmAlert } from 'react-confirm-alert'
+import './SingleBooking.css'
+import { BsClock, BsFillBuildingFill } from 'react-icons/bs'
+
 const API = process.env.REACT_APP_API_URL
 
 function SingleBooking() {
@@ -18,23 +22,54 @@ function SingleBooking() {
   }, [id])
 
   const handleDelete = () => {
-    axios
-      .delete(`${API}/bookings/${id}`)
-      .then(() => {
-        navigate('/bookings');
-      })
-      .catch((err) => {
-        console.warn('Error deleting booking: ', err);
-      });
-  };
+    confirmAlert({
+      title: 'Confirm to cancel',
+      message: 'Are you sure you want to cancel this booking?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => {
+            // User if confirmed, proceed with deleting
+            axios
+              .delete(`${API}/bookings/${id}`)
+              .then(() => {
+                navigate('/bookings')
+              })
+              .catch((err) => {
+                console.warn('Error deleting booking: ', err)
+              })
+          },
+        },
+        {
+          label: 'No',
+          onClick: () => {
+            // if user clicked "No" or closed the dialog, does nothing
+          },
+        },
+      ],
+    })
+  }
+
   return (
     booking && (
-      <div>
-        <div>
+      <div className='bookingInfo'>
+        <div className='bookingInfo__container'>
           <h3>{booking.meeting_name}</h3>
-          <p>start: {booking.start_time}</p>
-          <p>end: {booking.end_time}</p>
-          <p>floor:{booking.meeting_floor}</p>
+          <div>
+            <BsClock />
+            Start
+            <span>{booking.start_time}</span>
+          </div>
+          <div>
+            <BsClock />
+            End
+            {booking.end_time}
+          </div>
+
+          <p>
+            <BsFillBuildingFill />
+            {booking.meeting_floor}
+          </p>
         </div>
         <button onClick={handleDelete}>Cancel</button>
       </div>

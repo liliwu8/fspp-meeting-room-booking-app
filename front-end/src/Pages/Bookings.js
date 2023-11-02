@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './Bookings.css'
-import SingleBooking from './SingleBooking'
 
 const API = process.env.REACT_APP_API_URL
 function Bookings() {
   const [bookings, setBookings] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 5
+
   useEffect(() => {
     axios
       .get(`${API}/bookings`)
@@ -35,10 +37,26 @@ function Bookings() {
 
     return estDateFormat.format(estDate)
   }
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentBookings = bookings.slice(indexOfFirstItem, indexOfLastItem)
 
+  const totalPages = Math.ceil(bookings.length / itemsPerPage)
+
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
+    }
+  }
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
   return (
     <div className='bookings'>
-      {bookings.map((booking) => (
+      {currentBookings.map((booking) => (
         <Link to={`/bookings/${booking.booking_id}`}>
           <div key={booking.id} className='bookings__container'>
             <h3> {booking.meeting_name}</h3>
@@ -49,6 +67,16 @@ function Bookings() {
           </div>
         </Link>
       ))}
+      
+      <div className='pagination'>
+        <button onClick={goToPreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span className='current-page'>{currentPage}</span>
+        <button onClick={goToNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
     </div>
   )
 }

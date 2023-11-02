@@ -26,5 +26,6 @@ CREATE TABLE booking(
     start_time timestamp with time zone,
     end_time timestamp with time zone,
     attendees TEXT
+
 );
 
