@@ -13,9 +13,8 @@ INSERT INTO meetingRoom (room_name, capacity, floor) VALUES
   ('Training Room 2', 25, 2),
   ('Executive Suite', 5, 4);
 
--- Seed data for the "booking" table
 
--- Seed data for the "booking" table with working hours and time intervals in the afternoon (PM) in EST time
+-- Seed data for the "booking" table 
 INSERT INTO booking (meeting_name, book_meeting_roomid, start_time, end_time, attendees) VALUES
   ('Team Meeting', 1, '2023-10-27 19:00:00.000Z', '2023-10-27 20:00:00.000Z', 'john@example.com, mary@example.com, alice@example.com'),
   ('Client Presentation', 3, '2023-10-27 19:30:00.000Z', '2023-10-27 20:30:00.000Z', 'david@example.com, sarah@example.com'),

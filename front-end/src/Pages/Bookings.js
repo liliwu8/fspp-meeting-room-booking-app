@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { BsClock, BsFillBuildingFill } from 'react-icons/bs'
 import './Bookings.css'
 
 const API = process.env.REACT_APP_API_URL
@@ -56,23 +57,34 @@ function Bookings() {
   }
   return (
     <div className='bookings'>
-      {currentBookings.map((booking) => (
-        <Link to={`/bookings/${booking.booking_id}`}>
-          <div key={booking.id} className='bookings__container'>
-            <h3> {booking.meeting_name}</h3>
-            <p>{booking.meeting_room_name}</p>
-            <p>{convertUtcToEst(booking.start_time)}</p>
-            <p>{convertUtcToEst(booking.end_time)}</p>
-            <p>{booking.meeting_floor}</p>
-          </div>
-        </Link>
-      ))}
-      
+      {currentBookings &&
+        currentBookings.map((booking) => (
+          <Link to={`/bookings/${booking.booking_id}`}>
+            <div key={booking.id} className='bookings__container'>
+              <h3> {booking.meeting_name}</h3>
+              <p>{booking.meeting_room_name}</p>
+              <div className='bookings__startTime'>
+                <BsClock />
+                &nbsp;
+                <span>{convertUtcToEst(booking.start_time)}</span>
+              </div>
+              <div className='bookings__endTime'>
+                <BsClock />
+                &nbsp;
+                <span>{convertUtcToEst(booking.end_time)}</span>
+              </div>
+              <div className='bookings__floor'>
+                <BsFillBuildingFill /> <span>{booking.meeting_floor}</span>
+              </div>
+            </div>
+          </Link>
+        ))}
+
       <div className='pagination'>
         <button onClick={goToPreviousPage} disabled={currentPage === 1}>
           Previous
-        </button>
-        <span className='current-page'>{currentPage}</span>
+        </button>{' '}
+        <span className='current-page'>{currentPage}</span>{' '}
         <button onClick={goToNextPage} disabled={currentPage === totalPages}>
           Next
         </button>

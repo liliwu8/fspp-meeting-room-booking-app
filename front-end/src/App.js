@@ -5,6 +5,7 @@ import NewRoom from './Pages/NewRoom'
 import SingleBooking from './Pages/SingleBooking'
 import SingleMeetingRoom from './Pages/SingleMeetingRoom'
 import Bookings from './Pages/Bookings'
+import Footer from './Footer'
 import './App.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/bookings/:id' element={<SingleBooking />} />
         </Route>
       </Routes>
+      <Footer/>
     </div>
   )
 }

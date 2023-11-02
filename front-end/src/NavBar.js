@@ -1,28 +1,10 @@
-// import './NavBar.css'
-// import { Link } from 'react-router-dom';
-// function NavBar() {
-//     return (
-//         <div className="navbar">
-//             <Link to='/'>Meeting Room</Link>
-//             <Link to='/bookings'>Bookings</Link>
-//             <Link to='/meetingrooms/new'>New Rooms</Link>
-//         </div>
-//     );
-// }
-
-// export default NavBar;
-
 import './NavBar.css'
 import { useNavigate, Link } from 'react-router-dom'
-import {  useState } from 'react'
+import { useState } from 'react'
 import logo from './logo.png'
 function NavBar() {
- 
   const navigate = useNavigate()
-  const [openMenu, setOpenMenu] = useState(false)
-  const toggleMenu = () => {
-    setOpenMenu(!openMenu)
-  }
+ 
   return (
     <div className='navbar'>
       <div className='navbar__container'>
@@ -32,21 +14,11 @@ function NavBar() {
               src={logo}
               alt='logo'
               className='logo'
-              width={150}
-              height={100}
+            
             />
           </Link>
         </div>
-        <div
-          className='navbar__hamburger'
-          style={{ display: 'none' }}
-          onClick={toggleMenu}
-        >
-          =
-        </div>
-        <ul>
-         
-
+        <ul className='navbar__menuItems'>
           <li onClick={() => navigate('/')} className='navbar__menuItem'>
             Meetings
           </li>
@@ -69,7 +41,8 @@ function NavBar() {
 }
 
 export default NavBar
- {/* <li>
+{
+  /* <li>
             <Link
               to='/'
               className={`nav-tab ${activeTab === '/' ? 'active' : ''}`}
@@ -97,10 +70,11 @@ export default NavBar
             >
               New Rooms
             </Link>
-          </li> */}
+          </li> */
+}
 
-           // const [activeTab, setActiveTab] = useState(null)
+// const [activeTab, setActiveTab] = useState(null)
 
-  // const handleTabClick = (tab) => {
-  //   setActiveTab(tab)
-  // }
+// const handleTabClick = (tab) => {
+//   setActiveTab(tab)
+// }

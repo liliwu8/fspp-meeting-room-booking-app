@@ -1,36 +1,56 @@
-.bookingInfo__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: flex-start; /* Align text to the left */
-    text-align: left; /* Align text to the left */
-    margin: 0 auto;
-  }
-  
-  .bookingInfo__container div {
-    display: flex;
-    align-items: center;
-  }
-  
-  .bookingInfo__container div span {
-    margin-left: 5px; /* Add some spacing between the icon and text */
-  }
-  .singleBooking{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
+.bookingInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  height: 100vh; 
+ 
+}
 
-  .singleBooking__container {
-    background: none;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-width: 420px;
-    text-align: left;
-    transition: background-color 0.3s;
-  }
+.bookingInfo__container {
+  text-align: left; 
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 400px;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.bookingInfo__container h3 {
+  margin: 0;
+}
+
+.bookingInfo__container div {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.bookingInfo__container div span {
+  margin-left: 10px;
+}
+
+.bookingInfo__container p {
+  margin: 10px 0;
+}
+
+.bookingInfo__container button {
+  margin-top: 20px;
+  background-color: #ff0000;
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+.bookingInfo__container button:hover {
+  background-color: #cc0000; 
+}
+
+
   

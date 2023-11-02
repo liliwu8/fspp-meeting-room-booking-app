@@ -1,16 +1,44 @@
-.bookings{
-   display: flex;
-   flex-direction: column;
-   justify-content: center; /* Center the cards vertically */
-   align-items: center; /* Center the cards horizontally */
-   gap: 20px;
+.bookings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
 }
 
-.bookings__container{
-   background: none;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   padding: 20px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   min-width: 360px;
+.bookings a {
+  text-decoration: none;
+  color: black;
+}
+
+.bookings__container {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 420px;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.bookings__container h3{
+  font-size: 20px;
+  margin: 0;
+}
+
+.bookings__container p,.bookings__startTime,.bookings__floor{
+  margin: 8px 0;
+ 
+}
+
+.pagination button{
+  background-color: #1a0505;
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom:20px;
 }

@@ -49,6 +49,31 @@ function SingleBooking() {
       ],
     })
   }
+  function convertUtcToEst(utcTimestamp) {
+    if (!utcTimestamp) {
+      return 'Invalid Date'
+    }
+    const utcDate = new Date(utcTimestamp)
+    if (isNaN(utcDate)) {
+      return 'Invalid Date'
+    }
+    const estDate = new Date(utcDate.getTime() - 5 * 60 * 60 * 1000)
+
+    if (isNaN(estDate)) {
+      return 'Invalid Date'
+    }
+    const estDateFormat = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    })
+
+    return estDateFormat.format(estDate)
+  }
 
   return (
     booking && (
@@ -57,21 +82,17 @@ function SingleBooking() {
           <h3>{booking.meeting_name}</h3>
           <div>
             <BsClock />
-            Start
-            <span>{booking.start_time}</span>
+            <span>{convertUtcToEst(booking.start_time)}</span>
           </div>
           <div>
             <BsClock />
-            End
-            {booking.end_time}
+            <span>{convertUtcToEst(booking.end_time)}</span>
           </div>
-
-          <p>
-            <BsFillBuildingFill />
-            {booking.meeting_floor}
-          </p>
+          <div>
+            <BsFillBuildingFill /> <span>{booking.meeting_floor}</span>
+          </div>
+          <button onClick={handleDelete}>Cancel</button>
         </div>
-        <button onClick={handleDelete}>Cancel</button>
       </div>
     )
   )

@@ -1,33 +1,26 @@
-/* .singleMeetingRoom__info {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-.singleMeetingRoom__capacity {
-  margin: auto 0;
-} */
+
 .singleMeetingRoom__info {
   display: flex;
-  justify-content: center; /* Center align horizontally */
-  align-items: center; /* Center align vertically */
+  justify-content: center; 
+  align-items: center; 
   margin-top: 30px;
   gap: 36px;
   font-size: larger;
 }
 
 .singleMeetingRoom__info h3 {
-  margin: 0; /* Remove default margin for the h3 element */
+  margin: 0; 
 }
 
 .singleMeetingRoom__capacity {
   display: flex;
   align-items: center;
-  margin: 0 20px; /* Add some horizontal spacing between items */
+  margin: 0 20px; 
 }
 
 .singleMeetingRoom__capacity span,
 .singleMeetingRoom__info div span {
-  margin-left: 5px; /* Add some spacing between icon and text */
+  margin-left: 5px; 
 }
 
 .bookMeetingRoomForm {
@@ -78,15 +71,43 @@
   }
   
   .bookMeetingRoomForm button {
-    background-color: #007bff;
+    /* background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
+    cursor: pointer; */
+    margin-top: 20px;
+    background-color: #1a0505;
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
   }
 
   .bookMeetingRoomForm__innerContainer {
     margin: 10px;
+  }
+
+  .singleBooking{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+   margin-bottom: 40px;
+  }
+  
+
+  .singleBooking__container {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 420px;
+    text-align: left;
+    transition: background-color 0.3s;
+  
   }
