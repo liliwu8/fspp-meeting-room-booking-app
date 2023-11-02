@@ -11,11 +11,15 @@ const {
 const booking = express.Router()
 
 booking.get('/', async (req, res) => {
+  const bookings = await getAllBookings()
   try {
-    const bookings = await getAllBookings()
-    res.status(200).json({ success: true, payload: bookings })
+    if (bookings) {
+      res.status(200).json({ success: true, payload: bookings })
+    } else {
+      res.status(400).json({ success: false, message: 'not found!' })
+    }
   } catch (error) {
-    res.status(400).json({ success: false, message: 'not found!' })
+    res.status(500).json({ success: false, message: 'Internal Server Error' })
   }
 })
 
@@ -23,10 +27,14 @@ booking.get('/:booking_id', async (req, res) => {
   const { booking_id } = req.params
 
   const booking = await getBooking(booking_id)
-  if (booking[0]) {
-    res.status(200).json({ success: true, payload: booking[0] })
-  } else {
-    res.status(404).json({ success: false, payload: 'not found' })
+  try {
+    if (booking[0]) {
+      res.status(200).json({ success: true, payload: booking[0] })
+    } else {
+      res.status(404).json({ success: false, payload: 'not found' })
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal Server Error' })
   }
 })
 
@@ -35,12 +43,10 @@ booking.get('/meeting-rooms/available', async (req, res) => {
 
   // Check if start_time and end_time exist in the request.
   if (!start_time || !end_time) {
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: 'Both start_time and end_time are required',
-      })
+    res.status(400).json({
+      success: false,
+      message: 'Both start_time and end_time are required',
+    })
     return
   }
 
@@ -53,13 +59,11 @@ booking.get('/meeting-rooms/available', async (req, res) => {
     )
 
     if (availableMeetingRooms.length === 0) {
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: 'No meeting rooms are available',
-          payload: [],
-        })
+      res.status(200).json({
+        success: true,
+        message: 'No meeting rooms are available',
+        payload: [],
+      })
     } else {
       res.status(200).json({ success: true, payload: availableMeetingRooms })
     }
@@ -72,21 +76,29 @@ booking.delete('/:bookingId', async (req, res) => {
   const { bookingId } = req.params
 
   const deleteBook = await deleteBooking(bookingId)
-  if (deleteBook) {
-    res.status(200).json({ success: true, payload: deleteBook })
-  } else {
-    res.status(404).json({ error: 'server error' })
+  try {
+    if (deleteBook) {
+      res.status(200).json({ success: true, payload: deleteBook })
+    } else {
+      res.status(404).json({ error: 'server error' })
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal Server Error' })
   }
 })
 
 booking.post('/', async (req, res) => {
   const createABooking = await createBooking(req.body)
-
-  if (createABooking) {
+  try {
+   if (createABooking) {
     res.status(200).json({ success: true, payload: createABooking })
   } else {
     res.status(404).send({ success: false, payload: 'cannot book room' })
   }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal Server Error' })
+}
+ 
 })
 
 module.exports = booking
