@@ -20,6 +20,8 @@ app.use('/meeting-rooms', meetingRoomsController)
 
 app.use('/bookings', bookingControllers)
 
+
+
 app.get('*', (req, res) => {
   res.status(404).send('Not found!');
 });

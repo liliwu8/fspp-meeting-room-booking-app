@@ -13,8 +13,7 @@ CREATE TABLE meetingRoom(
     id SERIAL PRIMARY KEY,
     room_name TEXT,
     capacity INTEGER,
-    floor INTEGER
-   
+    floor INTEGER 
 );
 
 DROP TABLE IF EXISTS booking;
@@ -28,4 +27,7 @@ CREATE TABLE booking(
     attendees TEXT
 
 );
+
+
+
 
