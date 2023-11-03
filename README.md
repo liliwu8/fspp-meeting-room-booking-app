@@ -62,16 +62,16 @@ nodemon server.js
 ```
 
 
-## Technical Used
-```bash
-##Front-end
-HTML
-CSS
-Javascript
-React
-Node.js
+# Technical Used
+
+## Front-end
+- HTML
+- CSS
+- Javascript
+- React
+- Node.js
 
 ## Back-end
 - Express
 - Postgresql
-``````
+
