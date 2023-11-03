@@ -168,7 +168,7 @@ function Home() {
           </div>
         </div>
         <div className='roomList'>
-          {meetingRooms.length
+          {meetingRooms&&meetingRooms.length
             ? meetingRooms.map((room, index) => (
                 <Link to={`/meetingrooms/${room.id}`} key={index}>
                   <div className='roomList__container'>
