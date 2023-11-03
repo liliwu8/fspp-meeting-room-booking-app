@@ -67,11 +67,11 @@ function Home() {
     <div>
       <div className='home__bannerSection'>
         <img src={banner} className='home__bannerImg' alt='pic' />
-        <section className='home__headerText'>
+        {/* <section className='home__headerText'>
           <h1 className='home__title'>Book a Room</h1>
-        </section>
+        </section> */}
       </div>
-      <div>jh</div>
+      {/* <div>three parts about office booking</div> */}
       <div className='searchAvailForm'>
         <div className='searchAvailableRoomForm'>
           <div className='searchAvailableRoomForm__container'>
