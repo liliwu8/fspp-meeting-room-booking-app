@@ -6,6 +6,7 @@ const {
   deleteBooking,
   createBooking,
   findAvailableMeetingRooms,
+  updateBooking,
 } = require('../queries/booking')
 
 const booking = express.Router()
@@ -27,6 +28,7 @@ booking.get('/:booking_id', async (req, res) => {
   const { booking_id } = req.params
 
   const booking = await getBooking(booking_id)
+
   try {
     if (booking[0]) {
       res.status(200).json({ success: true, payload: booking[0] })
@@ -99,6 +101,21 @@ booking.post('/', async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal Server Error' })
 }
  
+})
+
+booking.put('/:id', async (req, res) => {
+  const { id } = req.params
+  const updateABooking = await updateBooking(id, req.body)
+  try {
+  if (updateABooking.id) {
+    res.status(200).json({ payload: updateABooking })
+  } else {
+    res.status(404).json('not found')
+  }
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Internal Server Error' })
+}
+  
 })
 
 module.exports = booking
