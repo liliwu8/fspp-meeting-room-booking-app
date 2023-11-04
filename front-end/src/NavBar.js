@@ -1,6 +1,5 @@
 import './NavBar.css'
 import { useNavigate, Link } from 'react-router-dom'
-import { useState } from 'react'
 import logo from './logo.png'
 function NavBar() {
   const navigate = useNavigate()
@@ -41,40 +40,4 @@ function NavBar() {
 }
 
 export default NavBar
-{
-  /* <li>
-            <Link
-              to='/'
-              className={`nav-tab ${activeTab === '/' ? 'active' : ''}`}
-              onClick={() => handleTabClick('/')}
-            >
-              Meeting Room
-            </Link>
-          </li>
-          <li>
-            <Link
-              to='/bookings'
-              className={`nav-tab ${activeTab === '/bookings' ? 'active' : ''}`}
-              onClick={() => handleTabClick('/bookings')}
-            >
-              Bookings
-            </Link>
-          </li>
-          <li>
-            <Link
-              to='/meetingrooms/new'
-              className={`nav-tab ${
-                activeTab === '/meetingrooms/new' ? 'active' : ''
-              }`}
-              onClick={() => handleTabClick('/meetingrooms/new')}
-            >
-              New Rooms
-            </Link>
-          </li> */
-}
 
-// const [activeTab, setActiveTab] = useState(null)
-
-// const handleTabClick = (tab) => {
-//   setActiveTab(tab)
-// }

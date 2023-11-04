@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className='footer'>
       <div className='footer__addr'>
-        <img src={logo} className='footer__logo' />
+        <img src={logo} className='footer__logo' alt='footerlogo' />
         <h2>Contact</h2>
         <address>
           1234 Midtown Manhattan NYC 10001-10001
@@ -24,7 +24,7 @@ export default function Footer() {
 
           <ul className='nav__ul'>
             <Link to='/'>
-              <li>About Us</li>
+              <li>About Me</li>
             </Link>
             <li>
               <a href='/'>
@@ -41,13 +41,13 @@ export default function Footer() {
           <h2 className='nav__title'>Technology</h2>
           <ul className='nav__ul nav__ul--extra'>
             <li>
-              <a href='#'>Software Design</a>
+              <a href='/'>React</a>
             </li>
             <li>
-              <a href='#'>Sofware Technology</a>
+              <a href='/'>Postgres</a>
             </li>
             <li>
-              <a href='#'>HardWare Design</a>
+              <a href='/'>CSS</a>
             </li>
           </ul>
         </li>
@@ -56,18 +56,17 @@ export default function Footer() {
           <h2 className='nav__title'>Legal</h2>
           <ul className='nav__ul'>
             <li>
-              <a href='#'>Privacy Policy</a>
+              <a href='/'>Privacy Policy</a>
             </li>
             <li>
-              <a href='#'>Terms of Use</a>
+              <a href='/'>Terms of Use</a>
             </li>
             <li>
-              <a href='#'>Sitemap</a>
+              <a href='/'>Sitemap</a>
             </li>
           </ul>
         </li>
       </ul>
-
       <div className='legal'>
         <p>&copy; 2022 Bookr. All rights reserved.</p>
       </div>
