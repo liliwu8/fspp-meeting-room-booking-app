@@ -6,7 +6,7 @@ A meeting room booking application that allows users to book, cancel, and create
 
 ## Important Links
 
-[Deployed Frontend](https://bookrmeeting.netlify.app/bookings)
+[Deployed Frontend](https://bookrmeeting.netlify.app/)
 
 [Deployed Backend](https://bookr.adaptable.app)
 
