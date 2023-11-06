@@ -37,7 +37,7 @@
   margin: 10px 0;
 }
 
-.bookingInfo__container button {
+.cancelButton {
   margin-top: 20px;
   background-color: #ff0000;
   color: #fff; 
@@ -48,9 +48,17 @@
   
 }
 
-.bookingInfo__container button:hover {
+.cancelButton:hover {
   background-color: #cc0000; 
 }
 
-
+.editButton{
+  margin-top: 20px;
+  background-color: #1a0505;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
   

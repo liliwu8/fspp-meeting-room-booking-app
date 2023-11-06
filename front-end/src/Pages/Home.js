@@ -98,9 +98,9 @@ function Home() {
                       filterTime={customTimePicker}
                       minTime={setHours(setMinutes(new Date(), 0), 9)}
                       maxTime={setHours(setMinutes(new Date(), 0), 18)}
+                      required
                     />
                   </div>
-
                   <div className='searchAvailableRoomForm__col'>
                     <label
                       htmlFor='end'
@@ -121,6 +121,7 @@ function Home() {
                       minTime={setHours(setMinutes(new Date(), 0), 9)}
                       maxTime={setHours(setMinutes(new Date(), 0), 18)}
                       disabled={!startDate}
+                      required
                     />
                   </div>
                 </div>
@@ -168,7 +169,7 @@ function Home() {
           </div>
         </div>
         <div className='roomList'>
-          {meetingRooms&&meetingRooms.length
+          {meetingRooms && meetingRooms.length
             ? meetingRooms.map((room, index) => (
                 <Link to={`/meetingrooms/${room.id}`} key={index}>
                   <div className='roomList__container'>

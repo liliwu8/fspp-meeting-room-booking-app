@@ -41,16 +41,13 @@
 }
 
 .searchAvailableRoomForm button {
-
   margin-top: 20px;
   background-color: #1a0505;
-  color: #fff; 
-  padding: 10px 20px; 
+  color: #fff;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  
-  
 }
 .searchAvailableRoomForm button :hover {
   background-color: #7a6d6d;
@@ -61,9 +58,9 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  max-height: 500px; 
+  max-height: 500px;
   overflow-y: scroll;
-  overflow-x: hidden;  
+  overflow-x: hidden;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 40px;
@@ -93,7 +90,7 @@
 }
 
 .roomList__container:hover {
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
 }
 
 .roomList:empty::after {
@@ -106,7 +103,6 @@
 .searchAvailableRoomForm__innerContainer {
   margin: 10px;
 }
-
 
 .home__bannerImg {
   width: 100vw;

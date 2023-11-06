@@ -1,0 +1,72 @@
+.editBookingForm {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.editBookingForm__container {
+  margin: 5px;
+
+  padding: 20px;
+}
+
+.editBookingForm__row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.editBookingForm__col {
+  flex-basis: 48%;
+}
+
+.editBookingForm__col-full {
+  flex-basis: 100%;
+}
+
+.editBookingForm__startTime,
+.editBookingForm__endTime,
+.editBookingForm__meetingName,
+.editBookingForm__attendees {
+  height: 30px;
+  min-width: 60%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.editBookingForm_Label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.saveButton {
+  margin-top: 20px;
+  background-color: #1a0505;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 120px;
+}
+
+.cancelButton {
+  margin-top: 20px;
+  background-color: red;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 30px;
+}

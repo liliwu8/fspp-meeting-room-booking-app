@@ -103,19 +103,25 @@ booking.post('/', async (req, res) => {
  
 })
 
+
 booking.put('/:id', async (req, res) => {
-  const { id } = req.params
-  const updateABooking = await updateBooking(id, req.body)
+  const { id } = req.params;
+  const updateABooking = await updateBooking(id, req.body);
+
   try {
-  if (updateABooking.id) {
-    res.status(200).json({ payload: updateABooking })
-  } else {
-    res.status(404).json('not found')
-  }
+    if (updateABooking.id) {
+      res.status(200).json({ success: true, message: 'Booking updated successfully', payload: updateABooking });
+    } else if (updateABooking === "Booking overlaps with an existing booking.") {
+      res.status(400).json({ success: false, message: 'Cannot update the booking due to overlapping time slot.' });
+    } else {
+      res.status(404).json({ success: false, message: 'Booking not found' });
+    }
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Internal Server Error' })
-}
-  
-})
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+});
+
+
+
 
 module.exports = booking

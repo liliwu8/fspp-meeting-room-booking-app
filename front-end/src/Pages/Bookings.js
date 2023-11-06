@@ -59,7 +59,7 @@ function Bookings() {
     <div className='bookings'>
       {currentBookings &&
         currentBookings.map((booking) => (
-          <Link to={`/bookings/${booking.booking_id}`}>
+          <Link to={`/bookings/${booking.id}`}>
             <div key={booking.id} className='bookings__container'>
               <h3> {booking.meeting_name}</h3>
               <p>{booking.meeting_room_name}</p>

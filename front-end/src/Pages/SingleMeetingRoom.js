@@ -1,4 +1,4 @@
-import {useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import DatePicker from 'react-datepicker'
@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 import './SingleMeetingRoom.css'
 import { BsFillPeopleFill, BsBuildingFill, BsClockFill } from 'react-icons/bs'
-
+import { RiTeamFill } from 'react-icons/ri'
 const API = process.env.REACT_APP_API_URL
 
 function SingleMeetingRoom() {
@@ -50,7 +50,7 @@ function SingleMeetingRoom() {
 
   const convertEstToUtc = (estTimestamp) => {
     const estDate = new Date(estTimestamp)
-    const utcDate = new Date(estDate.getTime() + 5 * 60 * 60 * 1000) 
+    const utcDate = new Date(estDate.getTime() + 5 * 60 * 60 * 1000)
     return utcDate.toISOString()
   }
 
@@ -72,7 +72,7 @@ function SingleMeetingRoom() {
         end_time: endUTC, // Use the UTC time
         attendees: booking.attendees,
         book_meeting_roomid: booking.book_meeting_roomid,
-      };
+      }
 
       axios
         .post(`${API}/bookings`, singleBooking)
@@ -264,6 +264,10 @@ function SingleMeetingRoom() {
                     <p>
                       <BsClockFill /> End Time:{' '}
                       {convertUtcToEst(booking.end_time)}
+                    </p>
+                    <p>
+                      {' '}
+                      <RiTeamFill /> {booking.attendees}
                     </p>
                   </div>
                 ))}

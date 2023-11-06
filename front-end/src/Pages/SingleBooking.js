@@ -4,12 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert'
 import './SingleBooking.css'
 import { BsClock, BsFillBuildingFill } from 'react-icons/bs'
-
+import { RiTeamFill } from 'react-icons/ri'
+import EditBookingForm from './EditBookingForm'
 const API = process.env.REACT_APP_API_URL
 
 function SingleBooking() {
   const { id } = useParams()
   const [booking, setBooking] = useState([])
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,6 +22,14 @@ function SingleBooking() {
       })
       .catch((error) => console.error('catch', error))
   }, [id])
+ 
+  const handleEdit = () => {
+    setIsEditModalOpen(true)
+  }
+
+  const handleUpdate = (updatedBooking) => {
+    setBooking(updatedBooking)
+  }
 
   const handleDelete = () => {
     confirmAlert({
@@ -49,6 +59,7 @@ function SingleBooking() {
       ],
     })
   }
+
   function convertUtcToEst(utcTimestamp) {
     if (!utcTimestamp) {
       return 'Invalid Date'
@@ -89,10 +100,26 @@ function SingleBooking() {
             <span>{convertUtcToEst(booking.end_time)}</span>
           </div>
           <div>
+            <RiTeamFill />
+            <span>{booking.attendees}</span>
+          </div>
+          <div>
             <BsFillBuildingFill /> <span>{booking.meeting_floor}</span>
           </div>
-          <button onClick={handleDelete}>Cancel</button>
+          <button onClick={handleDelete} className='cancelButton'>Cancel</button>
+          <button onClick={handleEdit} className='editButton'>Edit</button>
         </div>
+        {isEditModalOpen && (
+          <EditBookingForm
+            booking={booking}
+            bookingStartTime={convertUtcToEst(booking.start_time)}
+            bookingEndTime={convertUtcToEst(booking.end_time)}
+            bookingId={id}
+            onClose={() => setIsEditModalOpen(false)}
+            onUpdate={handleUpdate}
+            
+          />
+        )}
       </div>
     )
   )

@@ -5,7 +5,7 @@ const db = require('../db/dbConfig.js')
 const getAllBookings = async () => {
   try {
     const allBookings = await db.any(
-      'SELECT b.id AS booking_id, b.meeting_name,b.start_time, b.end_time, m.room_name AS meeting_room_name, m.floor AS meeting_floor FROM booking AS b JOIN meetingRoom AS m ON b.book_meeting_roomid = m.id'
+      'SELECT booking.id, booking.meeting_name, booking.start_time, booking.end_time, meetingRoom.room_name, meetingRoom.floor, booking.attendees FROM booking JOIN meetingRoom ON book_meeting_roomid = meetingRoom.id'
     )
     return allBookings
   } catch (error) {
@@ -16,16 +16,14 @@ const getAllBookings = async () => {
 const getBooking = async (id) => {
   try {
     const booking = await db.any(
-      'SELECT b.id AS booking_id, b.meeting_name, b.start_time, b.end_time, m.room_name AS meeting_room_name, m.floor AS meeting_floor FROM booking AS b JOIN meetingRoom AS m ON b.book_meeting_roomid = m.id WHERE b.id = $1',
+      'SELECT booking.id, booking.meeting_name, booking.start_time, booking.end_time, meetingRoom.room_name, meetingRoom.floor, booking.attendees FROM booking JOIN meetingRoom ON book_meeting_roomid = meetingRoom.id Where booking.id = $1',
       id
-    );
-    return booking;
+    )
+    return booking
   } catch (error) {
-    console.log(error.message || error);
+    console.log(error.message || error)
   }
 }
-
-
 
 const deleteBooking = async (bookingId) => {
   try {
@@ -38,7 +36,7 @@ const deleteBooking = async (bookingId) => {
     console.log(error.message || error)
   }
 }
-
+//create a booking and looking for overlap time if there is you booking shouldnt be created
 const createBooking = async (booking) => {
   const { meeting_name, start_time, end_time, attendees, book_meeting_roomid } =
     booking
@@ -121,47 +119,34 @@ const findAvailableMeetingRooms = async (
 }
 
 const updateBooking = async (id, booking) => {
-  const { meeting_name, start_time, end_time } = booking;
-  
+  const { meeting_name, start_time, end_time, attendees } = booking
+
   try {
+    // Check for overlapping bookings
+    const overlappingBooking = await db.oneOrNone(
+      'SELECT * FROM booking WHERE book_meeting_roomid = (SELECT book_meeting_roomid FROM booking WHERE id = $1) ' +
+        'AND id != $1 ' +
+        'AND ($2, $3) OVERLAPS (start_time, end_time)',
+      [id, start_time, end_time]
+    )
+
+    if (overlappingBooking) {
+      // Handle overlapping booking, you can throw an error or return an error message.
+      return 'Booking overlaps with an existing booking.'
+    }
+
+    // Update the booking if no overlapping bookings were found
     const updateBooking = await db.one(
-      'UPDATE booking SET meeting_name=$1, start_time=$2, end_time=$3 WHERE id = $4 RETURNING *',
-      [meeting_name, start_time, end_time, id]
-    );
-    return updateBooking;
+      'UPDATE booking SET meeting_name=$1, start_time=$2, end_time=$3 , attendees=$4 WHERE id = $5 RETURNING *',
+      [meeting_name, start_time, end_time, attendees, id]
+    )
+
+    return updateBooking
   } catch (error) {
-    console.log(error.message || error);
-    return error;
+    console.log(error.message || error)
+    return error
   }
 }
-
-// const updateBooking = async (id, booking) => {
-//   const { meeting_name, start_time, end_time } = booking;
-  
-//   try {
-//     const updatedBooking = await db.one(
-//       `
-//       UPDATE booking AS b
-//       SET meeting_name = $1, start_time = $2, end_time = $3, meeting_floor = (
-//         SELECT m.floor
-//         FROM meetingRoom AS m
-//         WHERE m.id = b.book_meeting_roomid
-//       )
-//       WHERE b.id = $4
-//       RETURNING *
-//       `,
-//       [meeting_name, start_time, end_time, id]
-//     );
-
-//     return updatedBooking;
-//   } catch (error) {
-//     console.log(error.message || error);
-//     return error;
-//   }
-// }
-
-
-
 
 module.exports = {
   getAllBookings,
@@ -169,5 +154,5 @@ module.exports = {
   createBooking,
   deleteBooking,
   findAvailableMeetingRooms,
-  updateBooking
+  updateBooking,
 }

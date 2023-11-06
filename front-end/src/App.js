@@ -19,6 +19,7 @@ function App() {
           <Route path='/meetingrooms/new' element={<NewRoom />} />
           <Route path='/bookings' element={<Bookings />} />
           <Route path='/bookings/:id' element={<SingleBooking />} />
+         
         </Route>
       </Routes>
       <Footer/>
